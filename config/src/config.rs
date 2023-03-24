@@ -662,6 +662,9 @@ pub struct Config {
     #[dynamic(default = "default_alternate_buffer_wheel_scroll_speed")]
     pub alternate_buffer_wheel_scroll_speed: u8,
 
+    #[dynamic(default = "default_scroll_factor")]
+    pub scroll_factor: f64,
+
     #[dynamic(default = "default_status_update_interval")]
     pub status_update_interval: u64,
 
@@ -1547,6 +1550,10 @@ fn default_status_update_interval() -> u64 {
 
 fn default_alternate_buffer_wheel_scroll_speed() -> u8 {
     3
+}
+
+fn default_scroll_factor() -> f64 {
+    1.0
 }
 
 fn default_alphabet() -> String {

@@ -396,15 +396,14 @@ impl XWindowInner {
                     return Ok(());
                 }
 
-                // Ideally this would be configurable, but it's currently a bit
-                // awkward to configure this layer, so let's just improve the
-                // default for now!
+                let factor = self.config.scroll_factor;
+
                 const LINES_PER_TICK: i16 = 5;
 
                 MouseEventKind::VertWheel(if b == 4 {
-                    LINES_PER_TICK
+                    (LINES_PER_TICK as f64 * factor) as i16
                 } else {
-                    -LINES_PER_TICK
+                    (-LINES_PER_TICK as f64 * factor) as i16
                 })
             }
             _ => {
