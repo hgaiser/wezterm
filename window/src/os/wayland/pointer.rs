@@ -341,11 +341,8 @@ impl PointerDispatcher {
     }
 
     pub fn set_cursor(&self, name: Option<&str>, serial: Option<u32>) {
-        let inner = self.inner.lock().unwrap();
-        let serial = serial.unwrap_or(inner.serial);
-
         if let Some(name) = name {
-            if let Err(err) = self.auto_pointer.set_cursor(name, Some(serial)) {
+            if let Err(err) = self.auto_pointer.set_cursor(name, serial) {
                 log::error!("Unable to set cursor to {}: {:#}", name, err);
             }
         } else {
